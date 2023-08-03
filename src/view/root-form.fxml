@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="628.0" prefWidth="649.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RootController">
+    <children>
+        <AnchorPane fx:id="anpRoot" layoutY="-6.0" prefHeight="628.0" prefWidth="649.0">
+            <children>
+                <AnchorPane layoutX="36.0" layoutY="48.0" prefHeight="199.0" prefWidth="166.0" style="-fx-background-color: #82ccdd; -fx-background-radius: 15;">
+                    <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="22.0" prefHeight="43.0" prefWidth="135.0" style="-fx-background-color: #079992;" text="Customers" textAlignment="CENTER" textFill="#ece4e4">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="lblCustomerCount" alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="93.0" prefHeight="66.0" prefWidth="122.0">
+                            <font>
+                                <Font size="36.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <AnchorPane layoutX="240.0" layoutY="45.0" prefHeight="199.0" prefWidth="166.0" style="-fx-background-color: #82ccdd; -fx-background-radius: 15;">
+                    <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="29.0" prefHeight="43.0" prefWidth="135.0" style="-fx-background-color: #079992;" text="Orders" textAlignment="CENTER" textFill="#ece4e4">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="lblOrderCount" alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="100.0" prefHeight="46.0" prefWidth="112.0">
+                            <font>
+                                <Font size="36.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <AnchorPane layoutX="449.0" layoutY="44.0" prefHeight="199.0" prefWidth="166.0" style="-fx-background-color: #82ccdd; -fx-background-radius: 15;">
+                    <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="25.0" prefHeight="43.0" prefWidth="135.0" style="-fx-background-color: #079992;" text="Items" textAlignment="CENTER" textFill="#ece4e4">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="lblItemCount" alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="90.0" prefHeight="46.0" prefWidth="112.0">
+                            <font>
+                                <Font size="36.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
