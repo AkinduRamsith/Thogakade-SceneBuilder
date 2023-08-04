@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -55,5 +56,11 @@ public class DashBoardController implements Initializable {
         this.anpRoot.getChildren().clear();
         this.anpRoot.getChildren().add(load);
 
+    }
+
+
+
+    public void btnExtOnActon(ActionEvent actionEvent) {
+        System.exit(0);
     }
 }

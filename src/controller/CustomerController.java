@@ -51,7 +51,7 @@ public class CustomerController implements Initializable {
             throw new RuntimeException(e);
         }
         tblCustomer.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue) ->{
-            if(newValue!=null) {
+            if(null != newValue) {
                 setTableValues(newValue);
             }
         });

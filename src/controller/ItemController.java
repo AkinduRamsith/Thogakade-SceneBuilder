@@ -48,8 +48,8 @@ public class ItemController implements Initializable {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        tblItem.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue) ->{
-            if(newValue!=null) {
+        tblItem.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (null != newValue) {
                 setTableValues(newValue);
             }
         });
@@ -82,6 +82,7 @@ public class ItemController implements Initializable {
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<Item, Double>("unitPrice"));
         colQtyOnHand.setCellValueFactory(new PropertyValueFactory<Item, Integer>("qtyOnHand"));
     }
+
     public void btnAddOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         String code = txtCode.getText();
         String description = txtDescription.getText();
@@ -113,6 +114,10 @@ public class ItemController implements Initializable {
         }
 
 
+        cleanFields();
+    }
+
+    private void cleanFields() {
         txtCode.setText("");
         txtDescription.setText("");
         txtUnitPrice.setText("");
@@ -143,10 +148,7 @@ public class ItemController implements Initializable {
             alert.showAndWait();
 
 
-            txtCode.setText("");
-            txtDescription.setText("");
-            txtUnitPrice.setText("");
-            txtQtyOnHand.setText("");
+            cleanFields();
 
         }
     }
@@ -170,11 +172,8 @@ public class ItemController implements Initializable {
             alert.setContentText("Delete Success");
             alert.showAndWait();
 
-            txtCode.setText("");
-            txtDescription.setText("");
-            txtUnitPrice.setText("");
-            txtQtyOnHand.setText("");
-        }else{
+            cleanFields();
+        } else {
             System.out.println("Fail");
         }
     }

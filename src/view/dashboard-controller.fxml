@@ -2,7 +2,6 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,11 +10,11 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashBoardController">
     <children>
-        <AnchorPane fx:id="anpDashBoard" prefHeight="724.6" prefWidth="921.8">
+        <AnchorPane fx:id="anpDashBoard" prefHeight="724.6" prefWidth="649.0">
             <children>
                 <AnchorPane layoutY="-1.0" prefHeight="767.0" prefWidth="274.0" style="-fx-background-color: #192a56;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="728.0" AnchorPane.topAnchor="-1.0">
                     <children>
-                        <Button layoutX="4.0" layoutY="130.0" mnemonicParsing="false" onAction="#btnCustomerOnAction" prefHeight="46.0" prefWidth="266.0" style="-fx-background-color: #192a56;" text="Customers" textFill="#f4efef">
+                        <Button alignment="CENTER" layoutX="4.0" layoutY="130.0" mnemonicParsing="false" onAction="#btnCustomerOnAction" prefHeight="46.0" prefWidth="266.0" style="-fx-background-color: #192a56;" text="Customers" textFill="#f4efef">
                             <font>
                                 <Font name="Book Antiqua Bold" size="29.0" />
                             </font>
@@ -23,7 +22,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button layoutX="4.0" layoutY="294.0" mnemonicParsing="false" onAction="#btnOrderOnAction" prefHeight="46.0" prefWidth="266.0" style="-fx-background-color: #192a56;" text="Orders" textFill="#f7f6f6">
+                        <Button layoutX="22.0" layoutY="294.0" mnemonicParsing="false" onAction="#btnOrderOnAction" prefHeight="55.0" prefWidth="225.0" style="-fx-background-color: #192a56;" text="Orders" textFill="#f7f6f6">
                             <font>
                                 <Font name="Book Antiqua Bold" size="29.0" />
                             </font>
@@ -31,7 +30,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button layoutX="4.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnItemOnAction" prefHeight="46.0" prefWidth="266.0" style="-fx-background-color: #192a56;" text="Items" textFill="#faf9f9">
+                        <Button layoutX="25.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnItemOnAction" prefHeight="55.0" prefWidth="203.0" style="-fx-background-color: #192a56;" text="Items" textFill="#faf9f9">
                             <font>
                                 <Font name="Book Antiqua Bold" size="29.0" />
                             </font>
@@ -49,7 +48,7 @@
                             <graphic>
                                 <ImageView fitHeight="56.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../../../../Level%202/CourseWork/OOP/Demo/Thogakade-Maven/Thogakade-2/Thogakade/src/img/home.png" />
+                                        <Image url="@../img/home.png" />
                                     </image>
                                     <effect>
                                         <ColorAdjust brightness="1.0" saturation="0.08" />
@@ -57,60 +56,46 @@
                                 </ImageView>
                             </graphic>
                         </Button>
+                        <ImageView fitHeight="43.0" fitWidth="45.0" layoutX="23.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/Customer.png" />
+                            </image>
+                            <effect>
+                                <ColorAdjust brightness="1.0" />
+                            </effect>
+                        </ImageView>
+                  <ImageView fitHeight="54.0" fitWidth="50.0" layoutX="20.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/items.png" />
+                     </image>
+                     <effect>
+                        <ColorAdjust brightness="0.19" contrast="0.19" hue="-0.42" saturation="-0.5" />
+                     </effect>
+                  </ImageView>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="20.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/order.png" />
+                     </image>
+                     <effect>
+                        <ColorAdjust brightness="1.0" />
+                     </effect>
+                  </ImageView>
+                  <Button layoutX="32.0" layoutY="616.0" mnemonicParsing="false" onAction="#btnExtOnActon" prefHeight="74.0" prefWidth="59.0" style="-fx-background-color: #192a56;">
+                     <graphic>
+                        <ImageView fitHeight="63.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true" rotate="179.8">
+                           <image>
+                              <Image url="@../img/Exit.png" />
+                           </image>
+                           <effect>
+                              <ColorAdjust brightness="1.0" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                     </children>
                 </AnchorPane>
-            <AnchorPane fx:id="anpRoot" layoutX="270.0" layoutY="96.0" prefHeight="628.0" prefWidth="649.0">
-               <children>
-                  <AnchorPane layoutX="36.0" layoutY="48.0" prefHeight="199.0" prefWidth="166.0" style="-fx-background-color: #82ccdd; -fx-background-radius: 15;">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="22.0" prefHeight="43.0" prefWidth="135.0" style="-fx-background-color: #079992;" text="Customers" textAlignment="CENTER" textFill="#ece4e4">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lblCustomerCount" alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="93.0" prefHeight="66.0" prefWidth="122.0">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="240.0" layoutY="45.0" prefHeight="199.0" prefWidth="166.0" style="-fx-background-color: #82ccdd; -fx-background-radius: 15;">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="29.0" prefHeight="43.0" prefWidth="135.0" style="-fx-background-color: #079992;" text="Orders" textAlignment="CENTER" textFill="#ece4e4">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lblOrderCount" alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="100.0" prefHeight="46.0" prefWidth="112.0">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="449.0" layoutY="44.0" prefHeight="199.0" prefWidth="166.0" style="-fx-background-color: #82ccdd; -fx-background-radius: 15;">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="25.0" prefHeight="43.0" prefWidth="135.0" style="-fx-background-color: #079992;" text="Items" textAlignment="CENTER" textFill="#ece4e4">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lblItemCount" alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="90.0" prefHeight="46.0" prefWidth="112.0">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
+                <AnchorPane fx:id="anpRoot" layoutX="280.0" layoutY="-10.0" prefHeight="724.0" prefWidth="726.0" />
             </children>
         </AnchorPane>
-      <Label layoutX="271.0" prefHeight="98.0" prefWidth="726.0" style="-fx-background-color: #40739e;" text="|DASHBOARD">
-         <font>
-            <Font name="Bodoni MT Bold" size="50.0" />
-         </font>
-      </Label>
     </children>
 </AnchorPane>

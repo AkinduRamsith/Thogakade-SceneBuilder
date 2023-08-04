@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="kordamp.ikonli.javafx" type="repository">
+    <properties maven-id="org.kordamp.ikonli:ikonli-javafx:12.3.1" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/kordamp/ikonli/ikonli-javafx/12.3.1/ikonli-javafx-12.3.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/kordamp/ikonli/ikonli-core/12.3.1/ikonli-core-12.3.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/kordamp/ikonli/ikonli-javafx/12.3.1/ikonli-javafx-12.3.1-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/kordamp/ikonli/ikonli-core/12.3.1/ikonli-core-12.3.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

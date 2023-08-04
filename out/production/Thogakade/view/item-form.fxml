@@ -13,9 +13,9 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="628.0" prefWidth="649.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ItemController">
+<AnchorPane prefHeight="724.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ItemController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="8.0" prefHeight="103.0" prefWidth="631.0" text="ADD Item Form" textAlignment="CENTER" textOverrun="CLIP">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="47.0" layoutY="14.0" prefHeight="103.0" prefWidth="631.0" text="Item Form" textAlignment="CENTER" textOverrun="CLIP">
          <font>
             <Font name="Comic Sans MS Bold" size="56.0" />
          </font>
@@ -43,19 +43,35 @@
             </DropShadow>
          </effect>
       </Label>
-      <TextField fx:id="txtCode" layoutX="89.0" layoutY="155.0" onAction="#txtCodeOnAction" prefHeight="42.0" prefWidth="101.0" promptText="Code" style="-fx-background-radius: 10;" />
-      <TextField fx:id="txtDescription" layoutX="206.0" layoutY="155.0" prefHeight="42.0" prefWidth="190.0" promptText="Description" style="-fx-background-radius: 10;" />
-      <TextField fx:id="txtUnitPrice" layoutX="89.0" layoutY="208.0" prefHeight="42.0" prefWidth="149.0" promptText="Unit Price" style="-fx-background-radius: 10;" />
-      <TextField fx:id="txtQtyOnHand" layoutX="247.0" layoutY="208.0" prefHeight="42.0" prefWidth="130.0" promptText="Qty On Hand" style="-fx-background-radius: 10;" />
-      <Button layoutX="429.0" layoutY="161.0" mnemonicParsing="false" onAction="#btnAddOnAction" text="ADD" />
-      <Button layoutX="521.0" layoutY="161.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" text="Update" />
-      <Button layoutX="423.0" layoutY="214.0" mnemonicParsing="false" onAction="#btnSearchOnAction" text="Search" />
-      <Button layoutX="523.0" layoutY="214.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" text="Delete" />
-      <TableView fx:id="tblItem" layoutX="35.0" layoutY="280.0" prefHeight="298.0" prefWidth="590.0">
+      <TextField fx:id="txtCode" layoutX="89.0" layoutY="140.0" onAction="#txtCodeOnAction" prefHeight="42.0" prefWidth="101.0" promptText="Code" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtDescription" layoutX="202.0" layoutY="140.0" prefHeight="42.0" prefWidth="190.0" promptText="Description" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtUnitPrice" layoutX="89.0" layoutY="193.0" prefHeight="42.0" prefWidth="149.0" promptText="Unit Price" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtQtyOnHand" layoutX="248.0" layoutY="193.0" prefHeight="42.0" prefWidth="130.0" promptText="Qty On Hand" style="-fx-background-radius: 10;" />
+      <Button layoutX="414.0" layoutY="146.0" mnemonicParsing="false" onAction="#btnAddOnAction" style="-fx-background-color: #0c2461;" text="ADD" textFill="#f2f1f1">
+         <font>
+            <Font name="System Bold" size="13.600000381469727" />
+         </font>
+      </Button>
+      <Button layoutX="477.0" layoutY="146.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" style="-fx-background-color: #0c2461;" text="Update" textFill="#f2f1f1">
+         <font>
+            <Font name="System Bold" size="13.600000381469727" />
+         </font>
+      </Button>
+      <Button layoutX="555.0" layoutY="146.0" mnemonicParsing="false" onAction="#btnSearchOnAction" style="-fx-background-color: #0c2461;" text="Search" textFill="#f2f1f1">
+         <font>
+            <Font name="System Bold" size="13.600000381469727" />
+         </font>
+      </Button>
+      <Button layoutX="621.0" layoutY="146.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" style="-fx-background-color: #0c2461;" text="Delete" textFill="#f2f1f1">
+         <font>
+            <Font name="System Bold" size="13.600000381469727" />
+         </font>
+      </Button>
+      <TableView fx:id="tblItem" layoutX="68.0" layoutY="280.0" prefHeight="298.0" prefWidth="603.0">
         <columns>
           <TableColumn fx:id="colCode" prefWidth="75.0" text="Code" />
-          <TableColumn fx:id="colDescription" prefWidth="75.0" text="Description" />
-            <TableColumn fx:id="colUnitPrice" prefWidth="75.0" text="Unit Price" />
+          <TableColumn fx:id="colDescription" prefWidth="192.8000030517578" text="Description" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="101.60003662109375" text="Unit Price" />
             <TableColumn fx:id="colQtyOnHand" prefWidth="75.0" text="Qty On Hand" />
         </columns>
          <columnResizePolicy>
