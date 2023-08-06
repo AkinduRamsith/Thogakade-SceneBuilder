@@ -22,7 +22,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button layoutX="22.0" layoutY="294.0" mnemonicParsing="false" onAction="#btnOrderOnAction" prefHeight="55.0" prefWidth="225.0" style="-fx-background-color: #192a56;" text="Orders" textFill="#f7f6f6">
+                        <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="11.0" layoutY="294.0" mnemonicParsing="false" onAction="#btnOrderOnAction" prefHeight="55.0" prefWidth="253.0" style="-fx-background-color: #192a56;" text="      Place Orders" textFill="#f7f6f6">
                             <font>
                                 <Font name="Book Antiqua Bold" size="29.0" />
                             </font>

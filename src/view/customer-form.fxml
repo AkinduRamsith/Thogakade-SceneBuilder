@@ -12,23 +12,25 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="724.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerController">
+<AnchorPane prefHeight="724.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerController">
     <children>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="40.0" layoutY="14.0" prefHeight="98.0" prefWidth="634.0" text="Customer Form" textAlignment="CENTER" textOverrun="CLIP">
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="40.0" layoutY="14.0" prefHeight="98.0"
+               prefWidth="634.0" text="Customer Form" textAlignment="CENTER" textOverrun="CLIP">
             <font>
-                <Font name="Comic Sans MS Bold" size="56.0" />
+                <Font name="Comic Sans MS Bold" size="56.0"/>
             </font>
             <textFill>
                 <RadialGradient centerX="0.2999999788072374" centerY="0.1755725554837525" radius="0.5">
                     <stops>
                         <Stop>
                             <color>
-                                <Color red="0.5894736647605896" green="0.15500974655151367" blue="0.15500974655151367" />
+                                <Color red="0.5894736647605896" green="0.15500974655151367" blue="0.15500974655151367"/>
                             </color>
                         </Stop>
                         <Stop offset="1.0">
                             <color>
-                                <Color red="0.5473684072494507" green="0.4132631719112396" blue="0.16421052813529968" />
+                                <Color red="0.5473684072494507" green="0.4132631719112396" blue="0.16421052813529968"/>
                             </color>
                         </Stop>
                     </stops>
@@ -37,40 +39,52 @@
             <effect>
                 <DropShadow height="19.810000000000002" radius="9.107500000000002" spread="0.79" width="18.62">
                     <color>
-                        <Color red="0.05655612051486969" green="0.05999999865889549" blue="0.05460000038146973" />
+                        <Color red="0.05655612051486969" green="0.05999999865889549" blue="0.05460000038146973"/>
                     </color>
                 </DropShadow>
             </effect>
         </Label>
-        <TextField fx:id="txtId" layoutX="77.0" layoutY="134.0" onAction="#txtIdOnAction" prefHeight="42.0" prefWidth="92.0" promptText="Id" style="-fx-background-radius: 10;" />
-        <TextField fx:id="txtName" layoutX="201.0" layoutY="134.0" prefHeight="42.0" prefWidth="156.0" promptText="Name" style="-fx-background-radius: 10;" />
-        <TextField fx:id="txtAddress" layoutX="77.0" layoutY="197.0" prefHeight="42.0" prefWidth="124.0" promptText="Address" style="-fx-background-radius: 10;" />
-        <TextField fx:id="txtSalary" layoutX="217.0" layoutY="197.0" prefHeight="42.0" prefWidth="156.0" promptText="Salary" style="-fx-background-radius: 10;" />
-        <Button layoutX="390.0" layoutY="134.0" mnemonicParsing="false" onAction="#btnAddCustomer" style="-fx-background-color: #0c2461;" text="Add" textFill="#f4f2f2">
-         <font>
-            <Font name="System Bold" size="13.600000381469727" />
-         </font></Button>
-        <Button layoutX="457.0" layoutY="134.0" mnemonicParsing="false" onAction="#btnSearchCustomer" style="-fx-background-color: #0c2461;" text="Search" textFill="#fafafa">
-         <font>
-            <Font name="System Bold" size="13.600000381469727" />
-         </font></Button>
-        <Button layoutX="538.0" layoutY="134.0" mnemonicParsing="false" onAction="#btnUpdateCustomer" style="-fx-background-color: #0c2461;" text="Update" textFill="#fafafa">
-         <font>
-            <Font name="System Bold" size="13.600000381469727" />
-         </font></Button>
-        <Button layoutX="617.0" layoutY="134.0" mnemonicParsing="false" onAction="#btnDeleteCustomer" style="-fx-background-color: #0c2461;" text="Delete" textFill="#fafafa">
-         <font>
-            <Font name="System Bold" size="13.600000381469727" />
-         </font></Button>
+        <TextField fx:id="txtId" layoutX="77.0" layoutY="134.0" onAction="#txtIdOnAction" prefHeight="42.0"
+                   prefWidth="92.0" promptText="Id" style="-fx-background-radius: 10;"/>
+        <TextField fx:id="txtName" layoutX="201.0" layoutY="134.0" prefHeight="42.0" prefWidth="156.0" promptText="Name"
+                   style="-fx-background-radius: 10;"/>
+        <TextField fx:id="txtAddress" layoutX="77.0" layoutY="197.0" prefHeight="42.0" prefWidth="124.0"
+                   promptText="Address" style="-fx-background-radius: 10;"/>
+        <TextField fx:id="txtSalary" layoutX="217.0" layoutY="197.0" prefHeight="42.0" prefWidth="156.0"
+                   promptText="Salary" style="-fx-background-radius: 10;"/>
+        <Button layoutX="390.0" layoutY="134.0" mnemonicParsing="false" onAction="#btnAddCustomer"
+                style="-fx-background-color: #0c2461;" text="Add" textFill="#f4f2f2">
+            <font>
+                <Font name="System Bold" size="13.600000381469727"/>
+            </font>
+        </Button>
+        <Button layoutX="457.0" layoutY="134.0" mnemonicParsing="false" onAction="#btnSearchCustomer"
+                style="-fx-background-color: #0c2461;" text="Search" textFill="#fafafa">
+            <font>
+                <Font name="System Bold" size="13.600000381469727"/>
+            </font>
+        </Button>
+        <Button layoutX="538.0" layoutY="134.0" mnemonicParsing="false" onAction="#btnUpdateCustomer"
+                style="-fx-background-color: #0c2461;" text="Update" textFill="#fafafa">
+            <font>
+                <Font name="System Bold" size="13.600000381469727"/>
+            </font>
+        </Button>
+        <Button layoutX="617.0" layoutY="134.0" mnemonicParsing="false" onAction="#btnDeleteCustomer"
+                style="-fx-background-color: #0c2461;" text="Delete" textFill="#fafafa">
+            <font>
+                <Font name="System Bold" size="13.600000381469727"/>
+            </font>
+        </Button>
         <TableView fx:id="tblCustomer" layoutX="77.0" layoutY="286.0" prefHeight="318.0" prefWidth="582.0">
             <columns>
-                <TableColumn fx:id="colID" prefWidth="109.60006713867188" text="Id" />
-                <TableColumn fx:id="colName" prefWidth="196.8000030517578" text="Name" />
-                <TableColumn fx:id="colAddress" prefWidth="139.20001220703125" text="Address" />
-                <TableColumn fx:id="colSalary" prefWidth="75.0" text="Salary" />
+                <TableColumn fx:id="colID" prefWidth="109.60006713867188" text="Id"/>
+                <TableColumn fx:id="colName" prefWidth="196.8000030517578" text="Name"/>
+                <TableColumn fx:id="colAddress" prefWidth="139.20001220703125" text="Address"/>
+                <TableColumn fx:id="colSalary" prefWidth="75.0" text="Salary"/>
             </columns>
             <columnResizePolicy>
-                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
             </columnResizePolicy>
         </TableView>
     </children>

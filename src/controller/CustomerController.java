@@ -50,12 +50,34 @@ public class CustomerController implements Initializable {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        tblCustomer.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue) ->{
-            if(null != newValue) {
+        tblCustomer.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (null != newValue) {
                 setTableValues(newValue);
             }
         });
     }
+
+    public static ObservableList<String> getAllCustomerId() throws SQLException, ClassNotFoundException {
+        ResultSet rst = DBConnection.getInstance().getConnection().prepareStatement("Select id From Customer").executeQuery();
+        ObservableList<String> list = FXCollections.observableArrayList();
+        while (rst.next()) {
+            list.add(rst.getString("id"));
+        }
+        return list;
+    }
+
+    public static Customer getAllCustomers(String id) throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        Statement stm = connection.createStatement();
+        String SQL = "Select * From Customer where id='" + id + "'";
+        ResultSet rst = stm.executeQuery(SQL);
+        if (rst.next()) {
+            return new Customer(id, rst.getString("name"), rst.getString("address"), rst.getDouble("salary"));
+        }
+
+        return null;
+    }
+
     private void setTableValues(Customer newValue) {
         txtId.setText(newValue.getId());
         txtName.setText(newValue.getName());
@@ -85,40 +107,49 @@ public class CustomerController implements Initializable {
     }
 
     public void btnAddCustomer(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        String id = txtId.getText();
-        String name = txtName.getText();
-        String address = txtAddress.getText();
-        double salary = Double.parseDouble(txtSalary.getText());
-        System.out.println(id + "," + name + "," + address + "," + salary);
-        Customer customer = new Customer(id, name, address, salary);
-        String SQL = "Insert into Customer Values(?,?,?,?)";
+        try {
+            String id = txtId.getText();
+            String name = txtName.getText();
+            String address = txtAddress.getText();
+            double salary = Double.parseDouble(txtSalary.getText());
+            System.out.println(id + "," + name + "," + address + "," + salary);
+            Customer customer = new Customer(id, name, address, salary);
+            String SQL = "Insert into Customer Values(?,?,?,?)";
 
-        Connection connection = DBConnection.getInstance().getConnection();
-        PreparedStatement pstm = connection.prepareStatement(SQL);
-        pstm.setObject(1, customer.getId());
-        pstm.setObject(2, customer.getName());
-        pstm.setObject(3, customer.getAddress());
-        pstm.setObject(4, customer.getSalary());
-        int i = pstm.executeUpdate();
-        if (i > 0) {
-            loadTable();
-            System.out.println("Added Success");
+            Connection connection = DBConnection.getInstance().getConnection();
+            PreparedStatement pstm = connection.prepareStatement(SQL);
+            pstm.setObject(1, customer.getId());
+            pstm.setObject(2, customer.getName());
+            pstm.setObject(3, customer.getAddress());
+            pstm.setObject(4, customer.getSalary());
+            int i = pstm.executeUpdate();
+            if (i > 0) {
+                loadTable();
+                System.out.println("Added Success");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Customer Add");
+                alert.setHeaderText(null);
+                alert.setContentText("Added Success");
+
+                alert.showAndWait();
+
+            } else {
+                System.out.println("Fail");
+            }
+
+
+            txtId.setText("");
+            txtName.setText("");
+            txtAddress.setText("");
+            txtSalary.setText("");
+        } catch (NumberFormatException ex) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Customer Add");
+            alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Added Success");
+            alert.setContentText(ex.getMessage());
 
             alert.showAndWait();
-
-        } else {
-            System.out.println("Fail");
         }
-
-
-        txtId.setText("");
-        txtName.setText("");
-        txtAddress.setText("");
-        txtSalary.setText("");
     }
 
     public void btnSearchCustomer(ActionEvent actionEvent) {
@@ -132,33 +163,42 @@ public class CustomerController implements Initializable {
     }
 
     public void btnUpdateCustomer(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        String id = txtId.getText();
-        String name = txtName.getText();
-        String address = txtAddress.getText();
-        double salary = Double.parseDouble(txtSalary.getText());
-        Customer customer = new Customer(id, name, address, salary);
-        String SQL = "Update Customer set name=?,address=?,salary=? where id=?";
-        Connection connection = DBConnection.getInstance().getConnection();
-        PreparedStatement pstm = connection.prepareStatement(SQL);
-        pstm.setObject(1, name);
-        pstm.setObject(2, address);
-        pstm.setObject(3, salary);
-        pstm.setObject(4, id);
-        int i = pstm.executeUpdate();
-        if (i > 0) {
-            loadTable();
+        try {
+            String id = txtId.getText();
+            String name = txtName.getText();
+            String address = txtAddress.getText();
+            double salary = Double.parseDouble(txtSalary.getText());
+            Customer customer = new Customer(id, name, address, salary);
+            String SQL = "Update Customer set name=?,address=?,salary=? where id=?";
+            Connection connection = DBConnection.getInstance().getConnection();
+            PreparedStatement pstm = connection.prepareStatement(SQL);
+            pstm.setObject(1, name);
+            pstm.setObject(2, address);
+            pstm.setObject(3, salary);
+            pstm.setObject(4, id);
+            int i = pstm.executeUpdate();
+            if (i > 0) {
+                loadTable();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Update Success");
+                alert.setHeaderText(null);
+                alert.setContentText("Update Success");
+                alert.showAndWait();
+
+
+                txtId.setText("");
+                txtName.setText("");
+                txtAddress.setText("");
+                txtSalary.setText("");
+
+            }
+        } catch (NumberFormatException ex) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Update Success");
+            alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Update Success");
+            alert.setContentText(ex.getMessage());
+
             alert.showAndWait();
-
-
-            txtId.setText("");
-            txtName.setText("");
-            txtAddress.setText("");
-            txtSalary.setText("");
-
         }
 
     }
@@ -182,6 +222,13 @@ public class CustomerController implements Initializable {
             txtName.setText("");
             txtAddress.setText("");
             txtSalary.setText("");
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Deleting");
+            alert.setHeaderText(null);
+            alert.setContentText("Empty Fields");
+
+            alert.showAndWait();
         }
     }
 
@@ -195,6 +242,13 @@ public class CustomerController implements Initializable {
             txtName.setText(rst.getString("name"));
             txtAddress.setText(rst.getString("address"));
             txtSalary.setText(String.valueOf(rst.getDouble("salary")));
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Searching");
+            alert.setHeaderText(null);
+            alert.setContentText("Customer Not Found");
+
+            alert.showAndWait();
         }
     }
 

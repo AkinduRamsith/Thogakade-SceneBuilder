@@ -54,6 +54,25 @@ public class ItemController implements Initializable {
             }
         });
     }
+    public static ObservableList<String> getAllItemCode() throws SQLException, ClassNotFoundException {
+        ResultSet rst = DBConnection.getInstance().getConnection().prepareStatement("Select code From Item").executeQuery();
+        ObservableList<String> list = FXCollections.observableArrayList();
+        while (rst.next()) {
+            list.add(rst.getString("code"));
+        }
+        return list;
+    }
+    public static Item getAllItems(String code) throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        Statement stm = connection.createStatement();
+        String SQL = "Select * From Item where code='" +code+ "'";
+        ResultSet rst = stm.executeQuery(SQL);
+        if (rst.next()) {
+            return new Item(code, rst.getString("description"), rst.getDouble("unitPrice"),rst.getInt("qtyOnHand"));
+        }
+
+        return null;
+    }
 
     private void setTableValues(Item newValue) {
         txtCode.setText(newValue.getCode());
@@ -84,37 +103,46 @@ public class ItemController implements Initializable {
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        String code = txtCode.getText();
-        String description = txtDescription.getText();
-        double unitPrice = Double.parseDouble(txtUnitPrice.getText());
-        int qtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
-        System.out.println(code + "," + description + "," + unitPrice + "," + qtyOnHand);
-        Item item = new Item(code, description, unitPrice, qtyOnHand);
-        String SQL = "Insert into Item Values(?,?,?,?)";
+        try {
+            String code = txtCode.getText();
+            String description = txtDescription.getText();
+            double unitPrice = Double.parseDouble(txtUnitPrice.getText());
+            int qtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
+            System.out.println(code + "," + description + "," + unitPrice + "," + qtyOnHand);
+            Item item = new Item(code, description, unitPrice, qtyOnHand);
+            String SQL = "Insert into Item Values(?,?,?,?)";
 
-        Connection connection = DBConnection.getInstance().getConnection();
-        PreparedStatement pstm = connection.prepareStatement(SQL);
-        pstm.setObject(1, item.getCode());
-        pstm.setObject(2, item.getDescription());
-        pstm.setObject(3, item.getUnitPrice());
-        pstm.setObject(4, item.getQtyOnHand());
-        int i = pstm.executeUpdate();
-        if (i > 0) {
-            loadTable();
-            System.out.println("Added Success");
+            Connection connection = DBConnection.getInstance().getConnection();
+            PreparedStatement pstm = connection.prepareStatement(SQL);
+            pstm.setObject(1, item.getCode());
+            pstm.setObject(2, item.getDescription());
+            pstm.setObject(3, item.getUnitPrice());
+            pstm.setObject(4, item.getQtyOnHand());
+            int i = pstm.executeUpdate();
+            if (i > 0) {
+                loadTable();
+                System.out.println("Added Success");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Item Add");
+                alert.setHeaderText(null);
+                alert.setContentText("Added Success");
+
+                alert.showAndWait();
+
+            } else {
+                System.out.println("Fail");
+            }
+
+
+            cleanFields();
+        }catch(NumberFormatException ex){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Item Add");
+            alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Added Success");
+            alert.setContentText(ex.getMessage());
 
             alert.showAndWait();
-
-        } else {
-            System.out.println("Fail");
         }
-
-
-        cleanFields();
     }
 
     private void cleanFields() {
@@ -125,31 +153,40 @@ public class ItemController implements Initializable {
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        String code = txtCode.getText();
-        String description = txtDescription.getText();
-        double unitPrice = Double.parseDouble(txtUnitPrice.getText());
-        int qtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
-        Item item = new Item(code, description, unitPrice, qtyOnHand);
-        String SQL = "Update Item set description=?,unitPrice=?,qtyOnHand=? where code=?";
-        Connection connection = DBConnection.getInstance().getConnection();
-        PreparedStatement pstm = connection.prepareStatement(SQL);
-        pstm.setObject(1, description);
-        pstm.setObject(2, unitPrice);
-        pstm.setObject(3, qtyOnHand);
-        pstm.setObject(4, code);
+        try {
+            String code = txtCode.getText();
+            String description = txtDescription.getText();
+            double unitPrice = Double.parseDouble(txtUnitPrice.getText());
+            int qtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
+            Item item = new Item(code, description, unitPrice, qtyOnHand);
+            String SQL = "Update Item set description=?,unitPrice=?,qtyOnHand=? where code=?";
+            Connection connection = DBConnection.getInstance().getConnection();
+            PreparedStatement pstm = connection.prepareStatement(SQL);
+            pstm.setObject(1, description);
+            pstm.setObject(2, unitPrice);
+            pstm.setObject(3, qtyOnHand);
+            pstm.setObject(4, code);
 
-        int i = pstm.executeUpdate();
-        if (i > 0) {
-            loadTable();
+            int i = pstm.executeUpdate();
+            if (i > 0) {
+                loadTable();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Update Success");
+                alert.setHeaderText(null);
+                alert.setContentText("Update Success");
+                alert.showAndWait();
+
+
+                cleanFields();
+
+            }
+        }catch(NumberFormatException ex){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Update Success");
+            alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Update Success");
+            alert.setContentText(ex.getMessage());
+
             alert.showAndWait();
-
-
-            cleanFields();
-
         }
     }
 
@@ -175,6 +212,12 @@ public class ItemController implements Initializable {
             cleanFields();
         } else {
             System.out.println("Fail");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Deleting");
+            alert.setHeaderText(null);
+            alert.setContentText("Empty Fields");
+
+            alert.showAndWait();
         }
     }
 
@@ -188,6 +231,13 @@ public class ItemController implements Initializable {
             txtDescription.setText(rst.getString("description"));
             txtUnitPrice.setText(String.valueOf(rst.getDouble("unitPrice")));
             txtQtyOnHand.setText(String.valueOf(rst.getInt("qtyOnHand")));
+        }else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Searching");
+            alert.setHeaderText(null);
+            alert.setContentText("Customer Not Found");
+
+            alert.showAndWait();
         }
     }
 
