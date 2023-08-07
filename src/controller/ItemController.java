@@ -13,9 +13,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Customer;
 import model.Item;
+import model.OrderDetail;
 
 import java.net.URL;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ItemController implements Initializable {
@@ -239,6 +241,21 @@ public class ItemController implements Initializable {
 
             alert.showAndWait();
         }
+    }
+    public static boolean updateStock(ArrayList<OrderDetail> orderDetailArrayList) throws SQLException, ClassNotFoundException {
+        for(OrderDetail orderDetail:orderDetailArrayList){
+            if(!updateStock(orderDetail)){
+                return false;
+            }
+        }
+        return true;
+    }
+    public static boolean updateStock(OrderDetail orderDetail) throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement("Update Item set qtyOnHand=qtyOnHand-? where code=?");
+        pstm.setObject(1,orderDetail.getQty());
+        pstm.setObject(2,orderDetail.getItemCode());
+        return pstm.executeUpdate()>0;
     }
 
 
