@@ -111,37 +111,41 @@ public class OrderFormController extends Application implements Initializable {
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        String code = cmbItemCode.getSelectionModel().getSelectedItem().toString();
-        String description = txtDescription.getText();
-        int qty = Integer.parseInt(txtQty.getText());
-        double unitPrice = Double.parseDouble(txtUnitPrice.getText());
-        int qtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
-        double total = calculateTotal(qty, unitPrice);
-        if (qtyOnHand < qty) {
-            new Alert(Alert.AlertType.WARNING, "Inventory Low").show();
-            return;
-        }
-
-        Cart cart = new Cart(code, description, unitPrice, qty, total);
-        int row = isExitsRow(cart);
-        if (row == -1) {
-            listItem.add(cart);
-        } else {
-            Cart temCart = listItem.get(row);
-            Cart newCart = new Cart(temCart.getCode(), temCart.getDescription(), temCart.getUnitPrice(), temCart.getQty() + qty, total + temCart.getTotal());
-            if(qtyOnHand<temCart.getQty()){
+        try {
+            String code = cmbItemCode.getSelectionModel().getSelectedItem().toString();
+            String description = txtDescription.getText();
+            int qty = Integer.parseInt(txtQty.getText());
+            double unitPrice = Double.parseDouble(txtUnitPrice.getText());
+            int qtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
+            double total = calculateTotal(qty, unitPrice);
+            if (qtyOnHand < qty) {
                 new Alert(Alert.AlertType.WARNING, "Inventory Low").show();
                 return;
             }
-            listItem.remove(row);
-            listItem.add(newCart);
-        }
 
-        tblOrder.setItems(listItem);
-        calculateNetTotal();
-        setCellValueFactory();
-        txtQty.setText("");
-        System.out.println(cart);
+            Cart cart = new Cart(code, description, unitPrice, qty, total);
+            int row = isExitsRow(cart);
+            if (row == -1) {
+                listItem.add(cart);
+            } else {
+                Cart temCart = listItem.get(row);
+                Cart newCart = new Cart(temCart.getCode(), temCart.getDescription(), temCart.getUnitPrice(), temCart.getQty() + qty, total + temCart.getTotal());
+                if (qtyOnHand < temCart.getQty()) {
+                    new Alert(Alert.AlertType.WARNING, "Inventory Low").show();
+                    return;
+                }
+                listItem.remove(row);
+                listItem.add(newCart);
+            }
+
+            tblOrder.setItems(listItem);
+            calculateNetTotal();
+            setCellValueFactory();
+            txtQty.setText("");
+            System.out.println(cart);
+        }catch(Exception ex){
+            new Alert(Alert.AlertType.WARNING,"Enter Qty First").show();
+        }
 
     }
 
@@ -159,14 +163,18 @@ public class OrderFormController extends Application implements Initializable {
     }
 
     public void btnRemoveOnAction(ActionEvent actionEvent) {
-        int row=tblOrder.getSelectionModel().getSelectedIndex();
-        if(row==-1){
-            new Alert(Alert.AlertType.WARNING, "Select a Row").show();
+        try {
+            int row = tblOrder.getSelectionModel().getSelectedIndex();
+            if (row == -1) {
+                new Alert(Alert.AlertType.WARNING, "Select a Row").show();
 
+            }
+            listItem.remove(row);
+            calculateNetTotal();
+            tblOrder.refresh();
+        }catch (Exception ex){
+            new Alert(Alert.AlertType.WARNING, "Empty Rows").show();
         }
-        listItem.remove(row);
-        calculateNetTotal();
-        tblOrder.refresh();
     }
 
 
@@ -203,6 +211,8 @@ public class OrderFormController extends Application implements Initializable {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
+        }catch (Exception ex){
+            new Alert(Alert.AlertType.WARNING, "Check the all Fields").show();
         }
     }
 
@@ -237,6 +247,7 @@ public class OrderFormController extends Application implements Initializable {
         String customerId = cmbCustomerId.getSelectionModel().getSelectedItem().toString();
         try {
             lblCustomerName.setText(CustomerController.getAllCustomers(customerId).getName());
+            loadAllCustomerId();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {

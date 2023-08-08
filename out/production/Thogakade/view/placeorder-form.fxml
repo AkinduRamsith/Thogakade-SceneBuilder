@@ -88,16 +88,6 @@
                 <Font name="Berlin Sans FB Demi Bold" size="19.0"/>
             </font>
         </Label>
-        <Button layoutX="279.0" layoutY="139.0" mnemonicParsing="false" onAction="#btnAddCustomerOnAction"
-                prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #0c2461;" text="New Customer"
-                textFill="#e4dede">
-            <font>
-                <Font name="System Bold" size="13.600000381469727"/>
-            </font>
-            <effect>
-                <Glow/>
-            </effect>
-        </Button>
         <Label layoutX="27.0" layoutY="194.0" prefHeight="30.0" prefWidth="61.0" text="Code :">
             <font>
                 <Font name="Berlin Sans FB Demi Bold" size="20.0"/>
@@ -170,7 +160,7 @@
                 <Font name="Berlin Sans FB Demi Bold" size="33.0"/>
             </font>
         </Label>
-        <Label fx:id="lblTotal" layoutX="136.0" layoutY="622.0" prefHeight="44.0" prefWidth="102.0" text="0.0"
+        <Label fx:id="lblTotal" layoutX="136.0" layoutY="622.0" prefHeight="44.0" prefWidth="206.0" text="0.0"
                textFill="#191eac">
             <font>
                 <Font name="Berlin Sans FB Demi Bold" size="33.0"/>
