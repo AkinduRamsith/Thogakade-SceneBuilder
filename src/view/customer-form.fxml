@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="724.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/20.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerFormController">
     <children>
         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="40.0" layoutY="14.0" prefHeight="98.0"
                prefWidth="634.0" text="Customer Form" textAlignment="CENTER" textOverrun="CLIP">

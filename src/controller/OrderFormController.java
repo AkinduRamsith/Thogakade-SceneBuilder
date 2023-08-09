@@ -8,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -55,7 +54,7 @@ public class OrderFormController extends Application implements Initializable {
 
     private void loadAllCustomerId() {
         try {
-            for (String id : CustomerController.getAllCustomerId()) {
+            for (String id : CustomerFormController.getAllCustomerId()) {
                 cmbCustomerId.getItems().addAll(id);
             }
         } catch (SQLException e) {
@@ -246,7 +245,7 @@ public class OrderFormController extends Application implements Initializable {
     public void comboBoxOnAction(ActionEvent actionEvent) {
         String customerId = cmbCustomerId.getSelectionModel().getSelectedItem().toString();
         try {
-            lblCustomerName.setText(CustomerController.getAllCustomers(customerId).getName());
+            lblCustomerName.setText(CustomerFormController.getAllCustomers(customerId).getName());
             loadAllCustomerId();
         } catch (SQLException e) {
             throw new RuntimeException(e);
