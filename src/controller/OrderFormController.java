@@ -66,7 +66,7 @@ public class OrderFormController extends Application implements Initializable {
 
     private void loadAllItemCode() {
         try {
-            for (String code : ItemController.getAllItemCode()) {
+            for (String code : ItemFormController.getAllItemCode()) {
                 cmbItemCode.getItems().addAll(code);
             }
         } catch (SQLException e) {
@@ -257,9 +257,9 @@ public class OrderFormController extends Application implements Initializable {
     public void comboBoxCodeOnAction(ActionEvent actionEvent) {
         String itemCode = cmbItemCode.getSelectionModel().getSelectedItem().toString();
         try {
-            txtDescription.setText(ItemController.getAllItems(itemCode).getDescription());
-            txtUnitPrice.setText(String.valueOf(ItemController.getAllItems(itemCode).getUnitPrice()));
-            txtQtyOnHand.setText(String.valueOf(ItemController.getAllItems(itemCode).getQtyOnHand()));
+            txtDescription.setText(ItemFormController.getAllItems(itemCode).getDescription());
+            txtUnitPrice.setText(String.valueOf(ItemFormController.getAllItems(itemCode).getUnitPrice()));
+            txtQtyOnHand.setText(String.valueOf(ItemFormController.getAllItems(itemCode).getQtyOnHand()));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {

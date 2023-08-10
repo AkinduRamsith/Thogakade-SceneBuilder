@@ -24,7 +24,7 @@ public class OrderController {
             if (orderIsAdded) {
                 boolean orderDetailAdded = OrderDetailController.addOrderDetail(order.getOrderDetailList());
                 if (orderDetailAdded) {
-                    boolean itemIsUpdated = ItemController.updateStock(order.getOrderDetailList());
+                    boolean itemIsUpdated = ItemFormController.updateStock(order.getOrderDetailList());
                     if (itemIsUpdated) {
                         connection.commit();
                         return true;
