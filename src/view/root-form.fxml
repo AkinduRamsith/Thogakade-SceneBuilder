@@ -1,58 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="628.0" prefWidth="649.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RootController">
+<AnchorPane prefHeight="628.0" prefWidth="649.0" xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RootController">
     <children>
         <AnchorPane fx:id="anpRoot" layoutY="-6.0" prefHeight="724.0" prefWidth="726.0">
             <children>
-                <AnchorPane layoutX="51.0" layoutY="162.0" prefHeight="199.0" prefWidth="166.0" style="-fx-background-color: #82ccdd; -fx-background-radius: 15;">
+                <AnchorPane layoutX="51.0" layoutY="162.0" prefHeight="245.0" prefWidth="166.0"
+                            style="-fx-background-color: #82ccdd; -fx-background-radius: 15;">
                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="22.0" prefHeight="43.0" prefWidth="135.0" style="-fx-background-color: #079992;" text="Customers" textAlignment="CENTER" textFill="#ece4e4">
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="22.0"
+                               prefHeight="43.0" prefWidth="135.0" style="-fx-background-color: #079992;"
+                               text="Customers" textAlignment="CENTER" textFill="#ece4e4">
                             <font>
-                                <Font name="System Bold" size="24.0" />
+                                <Font name="System Bold" size="24.0"/>
                             </font>
                         </Label>
-                        <Label fx:id="lblCustomerCount" alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="93.0" prefHeight="66.0" prefWidth="122.0">
+                        <Label fx:id="lblCustomerCount" alignment="CENTER" contentDisplay="CENTER" layoutX="21.0"
+                               layoutY="93.0" prefHeight="66.0" prefWidth="122.0">
                             <font>
-                                <Font size="36.0" />
+                                <Font size="36.0"/>
                             </font>
                         </Label>
+                        <ImageView fitHeight="54.0" fitWidth="68.0" layoutX="56.0" layoutY="178.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../img/Customer.png"/>
+                            </image>
+                            <effect>
+                                <ColorAdjust brightness="1.0" contrast="-0.17" saturation="-0.04"/>
+                            </effect>
+                        </ImageView>
                     </children>
                 </AnchorPane>
-                <AnchorPane layoutX="280.0" layoutY="162.0" prefHeight="199.0" prefWidth="166.0" style="-fx-background-color: #82ccdd; -fx-background-radius: 15;">
+                <AnchorPane layoutX="280.0" layoutY="162.0" prefHeight="246.0" prefWidth="166.0"
+                            style="-fx-background-color: #82ccdd; -fx-background-radius: 15;">
                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="29.0" prefHeight="43.0" prefWidth="135.0" style="-fx-background-color: #079992;" text="Orders" textAlignment="CENTER" textFill="#ece4e4">
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="29.0"
+                               prefHeight="43.0" prefWidth="135.0" style="-fx-background-color: #079992;" text="Orders"
+                               textAlignment="CENTER" textFill="#ece4e4">
                             <font>
-                                <Font name="System Bold" size="24.0" />
+                                <Font name="System Bold" size="24.0"/>
                             </font>
                         </Label>
-                        <Label fx:id="lblOrderCount" alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="100.0" prefHeight="46.0" prefWidth="112.0">
+                        <Label fx:id="lblOrderCount" alignment="CENTER" contentDisplay="CENTER" layoutX="27.0"
+                               layoutY="100.0" prefHeight="46.0" prefWidth="112.0">
                             <font>
-                                <Font size="36.0" />
+                                <Font size="36.0"/>
                             </font>
                         </Label>
+                        <ImageView fitHeight="54.0" fitWidth="68.0" layoutX="56.0" layoutY="178.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../img/cart.png"/>
+                            </image>
+                            <effect>
+                                <ColorAdjust brightness="1.0"/>
+                            </effect>
+                        </ImageView>
                     </children>
                 </AnchorPane>
-                <AnchorPane layoutX="499.0" layoutY="162.0" prefHeight="199.0" prefWidth="166.0" style="-fx-background-color: #82ccdd; -fx-background-radius: 15;">
+                <AnchorPane layoutX="499.0" layoutY="162.0" prefHeight="246.0" prefWidth="166.0"
+                            style="-fx-background-color: #82ccdd; -fx-background-radius: 15;">
                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="25.0" prefHeight="43.0" prefWidth="135.0" style="-fx-background-color: #079992;" text="Items" textAlignment="CENTER" textFill="#ece4e4">
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="25.0"
+                               prefHeight="43.0" prefWidth="135.0" style="-fx-background-color: #079992;" text="Items"
+                               textAlignment="CENTER" textFill="#ece4e4">
                             <font>
-                                <Font name="System Bold" size="24.0" />
+                                <Font name="System Bold" size="24.0"/>
                             </font>
                         </Label>
-                        <Label fx:id="lblItemCount" alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="90.0" prefHeight="46.0" prefWidth="112.0">
+                        <Label fx:id="lblItemCount" alignment="CENTER" contentDisplay="CENTER" layoutX="32.0"
+                               layoutY="90.0" prefHeight="46.0" prefWidth="112.0">
                             <font>
-                                <Font size="36.0" />
+                                <Font size="36.0"/>
                             </font>
                         </Label>
+                        <ImageView fitHeight="54.0" fitWidth="68.0" layoutX="56.0" layoutY="178.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../img/Inventory.png"/>
+                            </image>
+                            <effect>
+                                <ColorAdjust brightness="0.08"/>
+                            </effect>
+                        </ImageView>
                     </children>
                 </AnchorPane>
                 <Label prefHeight="98.0" prefWidth="726.0" style="-fx-background-color: #40739e;" text="|DASHBOARD">
                     <font>
-                        <Font name="Bodoni MT Bold" size="50.0" />
+                        <Font name="Bodoni MT Bold" size="50.0"/>
                     </font>
                 </Label>
             </children>
