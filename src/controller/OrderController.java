@@ -1,11 +1,33 @@
 package controller;
 
 import db.DBConnection;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import model.Customer;
 import model.Order;
 
 import java.sql.*;
 
 public class OrderController {
+    public static ObservableList<Order> getAllOrders(){
+        try{
+        String SQL = "Select * From Orders";
+        ObservableList<Order> list = FXCollections.observableArrayList();
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(SQL);
+        ResultSet rst = pstm.executeQuery();
+
+        while (rst.next()) {
+            Order order = new Order(rst.getString("id"), rst.getString("date"), rst.getString("customerId"),null);
+            list.add(order);
+
+        }
+        return list;
+
+    } catch (SQLException | ClassNotFoundException e) {
+        throw new RuntimeException(e);
+    }
+    }
     public static String getLastOrderId() throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
         Statement stm = connection.createStatement();

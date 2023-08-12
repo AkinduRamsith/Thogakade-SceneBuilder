@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="anpPlaceOrder" prefHeight="724.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/20.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderFormController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PlaceOrderFormController">
     <children>
         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="46.0" prefHeight="74.0" prefWidth="634.0"
                text="Place Order form" textAlignment="CENTER" textOverrun="CLIP">

@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class OrderFormController extends Application implements Initializable {
+public class PlaceOrderFormController extends Application implements Initializable {
     public Button btnAdd;
     @FXML
     private TableView<Cart> tblOrder;

@@ -31,7 +31,7 @@ public class DashBoardController implements Initializable {
         this.anpRoot.getChildren().add(load);
     }
 
-    public void btnOrderOnAction(ActionEvent actionEvent) throws IOException {
+    public void btnPlaceOrderOnAction(ActionEvent actionEvent) throws IOException {
         URL resource=this.getClass().getResource("/view/placeorder-form.fxml");
         assert resource!=null;
         Parent load=(Parent) FXMLLoader.load(resource);
@@ -67,5 +67,13 @@ public class DashBoardController implements Initializable {
 
     public void btnExtOnActon(ActionEvent actionEvent) {
         System.exit(0);
+    }
+
+    public void btnOrderOnAction(ActionEvent actionEvent) throws IOException {
+        URL resource=this.getClass().getResource("/view/order-form.fxml");
+        assert resource!=null;
+        Parent load=(Parent) FXMLLoader.load(resource);
+        this.anpRoot.getChildren().clear();
+        this.anpRoot.getChildren().add(load);
     }
 }

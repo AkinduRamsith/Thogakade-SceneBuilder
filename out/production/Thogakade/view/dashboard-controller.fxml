@@ -8,109 +8,110 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashBoardController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashBoardController">
     <children>
         <AnchorPane fx:id="anpDashBoard" prefHeight="724.6" prefWidth="649.0">
             <children>
-                <AnchorPane layoutY="-1.0" prefHeight="767.0" prefWidth="274.0" style="-fx-background-color: #192a56;"
-                            AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="728.0"
-                            AnchorPane.topAnchor="-1.0">
+                <AnchorPane layoutY="-1.0" prefHeight="767.0" prefWidth="274.0" style="-fx-background-color: #192a56;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="728.0" AnchorPane.topAnchor="-1.0">
                     <children>
-                        <Button alignment="CENTER" layoutX="4.0" layoutY="130.0" mnemonicParsing="false"
-                                onAction="#btnCustomerOnAction" prefHeight="46.0" prefWidth="266.0"
-                                style="-fx-background-color: #192a56;" text="Customers" textFill="#f4efef">
+                        <Button alignment="CENTER" layoutX="4.0" layoutY="130.0" mnemonicParsing="false" onAction="#btnCustomerOnAction" prefHeight="46.0" prefWidth="266.0" style="-fx-background-color: #192a56;" text="Customers" textFill="#f4efef">
                             <font>
-                                <Font name="Book Antiqua Bold" size="29.0"/>
+                                <Font name="Book Antiqua Bold" size="29.0" />
                             </font>
                             <cursor>
-                                <Cursor fx:constant="HAND"/>
+                                <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="11.0" layoutY="294.0"
-                                mnemonicParsing="false" onAction="#btnOrderOnAction" prefHeight="55.0" prefWidth="253.0"
-                                style="-fx-background-color: #192a56;" text="      Place Orders" textFill="#f7f6f6">
+                        <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="11.0" layoutY="294.0" mnemonicParsing="false" onAction="#btnPlaceOrderOnAction" prefHeight="55.0" prefWidth="253.0" style="-fx-background-color: #192a56;" text="      Place Orders" textFill="#f7f6f6">
                             <font>
-                                <Font name="Book Antiqua Bold" size="29.0"/>
+                                <Font name="Book Antiqua Bold" size="29.0" />
                             </font>
                             <cursor>
-                                <Cursor fx:constant="HAND"/>
+                                <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button layoutX="25.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnItemOnAction"
-                                prefHeight="55.0" prefWidth="203.0" style="-fx-background-color: #192a56;" text="Items"
-                                textFill="#faf9f9">
+                        <Button layoutX="25.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnItemOnAction" prefHeight="55.0" prefWidth="203.0" style="-fx-background-color: #192a56;" text="Items" textFill="#faf9f9">
                             <font>
-                                <Font name="Book Antiqua Bold" size="29.0"/>
+                                <Font name="Book Antiqua Bold" size="29.0" />
                             </font>
                             <cursor>
-                                <Cursor fx:constant="HAND"/>
+                                <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button fx:id="btnHome" layoutX="-16.0" layoutY="14.0" mnemonicParsing="false"
-                                onAction="#btnHomeOnAction" prefHeight="75.0" prefWidth="285.0"
-                                style="-fx-background-color: #192a56;" text="Thogakade" textFill="#fcf7f7">
+                        <Button fx:id="btnHome" layoutX="-16.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnHomeOnAction" prefHeight="75.0" prefWidth="285.0" style="-fx-background-color: #192a56;" text="Thogakade" textFill="#fcf7f7">
                             <font>
-                                <Font name="Bernard MT Condensed" size="39.0"/>
+                                <Font name="Bernard MT Condensed" size="39.0" />
                             </font>
                             <cursor>
-                                <Cursor fx:constant="HAND"/>
+                                <Cursor fx:constant="HAND" />
                             </cursor>
                             <graphic>
                                 <ImageView fitHeight="56.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../img/home.png"/>
+                                        <Image url="@../img/home.png" />
                                     </image>
                                     <effect>
-                                        <ColorAdjust brightness="1.0" saturation="0.08"/>
+                                        <ColorAdjust brightness="1.0" saturation="0.08" />
                                     </effect>
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <ImageView fitHeight="43.0" fitWidth="45.0" layoutX="23.0" layoutY="136.0" pickOnBounds="true"
-                                   preserveRatio="true">
+                        <ImageView fitHeight="43.0" fitWidth="45.0" layoutX="23.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../img/Customer.png"/>
+                                <Image url="@../img/Customer.png" />
                             </image>
                             <effect>
-                                <ColorAdjust brightness="1.0"/>
+                                <ColorAdjust brightness="1.0" />
                             </effect>
                         </ImageView>
-                        <ImageView fitHeight="54.0" fitWidth="50.0" layoutX="20.0" layoutY="215.0" pickOnBounds="true"
-                                   preserveRatio="true">
+                        <ImageView fitHeight="54.0" fitWidth="50.0" layoutX="20.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../img/items.png"/>
+                                <Image url="@../img/items.png" />
                             </image>
                             <effect>
-                                <ColorAdjust brightness="0.19" contrast="0.19" hue="-0.42" saturation="-0.5"/>
+                                <ColorAdjust brightness="0.19" contrast="0.19" hue="-0.42" saturation="-0.5" />
                             </effect>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="20.0" layoutY="297.0" pickOnBounds="true"
-                                   preserveRatio="true">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="20.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../img/order.png"/>
+                                <Image url="@../img/order.png" />
                             </image>
                             <effect>
-                                <ColorAdjust brightness="1.0"/>
+                                <ColorAdjust brightness="1.0" />
                             </effect>
                         </ImageView>
-                        <Button layoutX="32.0" layoutY="616.0" mnemonicParsing="false" onAction="#btnExtOnActon"
-                                prefHeight="74.0" prefWidth="59.0" style="-fx-background-color: #192a56;">
+                        <Button layoutX="32.0" layoutY="616.0" mnemonicParsing="false" onAction="#btnExtOnActon" prefHeight="74.0" prefWidth="59.0" style="-fx-background-color: #192a56;">
                             <graphic>
-                                <ImageView fitHeight="63.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true"
-                                           rotate="179.8">
+                                <ImageView fitHeight="63.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true" rotate="179.8">
                                     <image>
-                                        <Image url="@../img/Exit.png"/>
+                                        <Image url="@../img/Exit.png" />
                                     </image>
                                     <effect>
-                                        <ColorAdjust brightness="1.0"/>
+                                        <ColorAdjust brightness="1.0" />
                                     </effect>
                                 </ImageView>
                             </graphic>
                         </Button>
+                        <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="32.0" layoutY="368.0" mnemonicParsing="false" onAction="#btnOrderOnAction" prefHeight="55.0" prefWidth="187.0" style="-fx-background-color: #192a56;" text="       Orders" textFill="#f7f6f6">
+                            <font>
+                                <Font name="Book Antiqua Bold" size="29.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
+                 
+                  <ImageView fitHeight="49.0" fitWidth="51.0" layoutX="42.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/orders.png" />
+                     </image>
+                     <effect>
+                        <ColorAdjust brightness="1.0" />
+                     </effect>
+                  </ImageView>
                     </children>
                 </AnchorPane>
-                <AnchorPane fx:id="anpRoot" layoutX="280.0" layoutY="-10.0" prefHeight="724.0" prefWidth="726.0"/>
+                <AnchorPane fx:id="anpRoot" layoutX="280.0" layoutY="-10.0" prefHeight="724.0" prefWidth="726.0" />
             </children>
         </AnchorPane>
     </children>
