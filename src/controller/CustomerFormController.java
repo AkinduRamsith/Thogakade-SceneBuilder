@@ -44,9 +44,7 @@ public class CustomerFormController implements Initializable {
         setCellValueFactory();
         try {
             loadTable();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         tblCustomer.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -83,6 +81,7 @@ public class CustomerFormController implements Initializable {
         txtAddress.setText(newValue.getAddress());
         txtSalary.setText(String.valueOf(newValue.getSalary()));
     }
+
 
     private void loadTable() throws SQLException, ClassNotFoundException {
        ObservableList<Customer> customerList=new CustomerController().getAllCustomer();

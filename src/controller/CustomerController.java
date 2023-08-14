@@ -8,24 +8,26 @@ import model.Customer;
 
 import java.sql.*;
 
-public class CustomerController implements CustomerService{
+
+
+public class CustomerController implements CustomerService {
     @Override
     public boolean addCustomer(Customer customer) {
         try {
-            String SQL = "Insert into Customer Values(?,?,?,?)";
+
             Connection connection = DBConnection.getInstance().getConnection();
-            PreparedStatement pstm = connection.prepareStatement(SQL);
+            PreparedStatement pstm = connection.prepareStatement("Insert into Customer Values(?,?,?,?)");
             pstm.setObject(1, customer.getId());
             pstm.setObject(2, customer.getName());
             pstm.setObject(3, customer.getAddress());
             pstm.setObject(4, customer.getSalary());
 
-            if(pstm.executeUpdate()>0){
+            if (pstm.executeUpdate() > 0) {
                 return true;
             }
         } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-           // throw new RuntimeException(e);
+
         }
 
         return false;
@@ -34,19 +36,19 @@ public class CustomerController implements CustomerService{
     @Override
     public boolean updateCustomer(Customer customer) {
         try {
-            String SQL = "Update Customer set name=?,address=?,salary=? where id=?";
+
             Connection connection = DBConnection.getInstance().getConnection();
-            PreparedStatement pstm = connection.prepareStatement(SQL);
+            PreparedStatement pstm = connection.prepareStatement("Update Customer set name=?,address=?,salary=? where id=?");
             pstm.setObject(1, customer.getName());
             pstm.setObject(2, customer.getAddress());
             pstm.setObject(3, customer.getSalary());
             pstm.setObject(4, customer.getId());
-            if(pstm.executeUpdate()>0){
+            if (pstm.executeUpdate() > 0) {
                 return true;
             }
         } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-            // throw new RuntimeException(e);
+
         }
 
         return false;
@@ -58,18 +60,18 @@ public class CustomerController implements CustomerService{
         try {
             Connection connection = DBConnection.getInstance().getConnection();
             Statement stm = connection.createStatement();
-            String SQL = "Select * From Customer where id='" + id + "'";
-            ResultSet rst = stm.executeQuery(SQL);
-            while(rst.next()){
-                Customer customer=new Customer(id,rst.getString("name"),rst.getString("address"),rst.getDouble("salary"));
 
-                    return customer;
+            ResultSet rst = stm.executeQuery("Select * From Customer where id='" + id + "'");
+            while (rst.next()) {
+
+
+                return new Customer(id, rst.getString("name"), rst.getString("address"), rst.getDouble("salary"));
 
             }
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
-            throw new RuntimeException(e);
+
 
         }
 
@@ -81,15 +83,16 @@ public class CustomerController implements CustomerService{
 
 
         try {
-            String SQL = "Delete From Customer where id='" + id + "'";
+
             Connection connection = DBConnection.getInstance().getConnection();
             Statement stm = connection.createStatement();
-             if(stm.executeUpdate(SQL)>0){
-                 return true;
-             }
+
+            if (stm.executeUpdate("Delete From Customer where id='" + id + "'") > 0) {
+                return true;
+            }
         } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-            // throw new RuntimeException(e);
+
         }
 
         return false;
@@ -99,10 +102,10 @@ public class CustomerController implements CustomerService{
     public ObservableList<Customer> getAllCustomer() {
 
         try {
-            String SQL = "Select * From Customer";
+
             ObservableList<Customer> list = FXCollections.observableArrayList();
             Connection connection = DBConnection.getInstance().getConnection();
-            PreparedStatement pstm = connection.prepareStatement(SQL);
+            PreparedStatement pstm = connection.prepareStatement( "Select * From Customer");
             ResultSet rst = pstm.executeQuery();
 
             while (rst.next()) {
@@ -113,9 +116,10 @@ public class CustomerController implements CustomerService{
             return list;
 
         } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
 
-        //return null;
+
     }
 }

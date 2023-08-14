@@ -3,30 +3,61 @@ package controller;
 import db.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import javafx.scene.control.Alert;
 import model.Customer;
 import model.Order;
+import model.OrderCart;
+
 
 import java.sql.*;
 
 public class OrderController {
-    public static ObservableList<Order> getAllOrders(){
-        try{
-        String SQL = "Select * From Orders";
-        ObservableList<Order> list = FXCollections.observableArrayList();
-        Connection connection = DBConnection.getInstance().getConnection();
-        PreparedStatement pstm = connection.prepareStatement(SQL);
-        ResultSet rst = pstm.executeQuery();
+    public static ObservableList<Order> getAllOrders() {
+        ObservableList<Order> list;
+        try {
+            String SQL = "Select * From Orders";
+            list = FXCollections.observableArrayList();
+            Connection connection = DBConnection.getInstance().getConnection();
+            PreparedStatement pstm = connection.prepareStatement(SQL);
+            ResultSet rst = pstm.executeQuery();
 
-        while (rst.next()) {
-            Order order = new Order(rst.getString("id"), rst.getString("date"), rst.getString("customerId"),null);
-            list.add(order);
+            while (rst.next()) {
+                Order order = new Order(rst.getString("id"), rst.getString("date"), rst.getString("customerId"), null);
+                list.add(order);
 
+            }
+
+
+        } catch (SQLException | ClassNotFoundException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            throw new RuntimeException(e);
         }
         return list;
 
-    } catch (SQLException | ClassNotFoundException e) {
-        throw new RuntimeException(e);
     }
+    public ObservableList<OrderCart> getAllOrderDetails() {
+
+        try {
+
+            ObservableList<OrderCart> list = FXCollections.observableArrayList();
+            Connection connection = DBConnection.getInstance().getConnection();
+            PreparedStatement pstm = connection.prepareStatement( " select * from orders inner join orderdetail on orders.id=orderdetail.orderid inner join item on item.code=orderdetail.itemcode");
+            ResultSet rst = pstm.executeQuery();
+
+            while (rst.next()) {
+                OrderCart orderCart = new OrderCart(rst.getString("id"), rst.getString("customerId"), rst.getString("itemCode"), rst.getString("description"),rst.getInt("qty"));
+                list.add(orderCart);
+
+            }
+            return list;
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+
     }
     public static String getLastOrderId() throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();

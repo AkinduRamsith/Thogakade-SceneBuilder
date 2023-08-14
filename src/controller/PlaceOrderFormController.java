@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class PlaceOrderFormController extends Application implements Initializable {
+public class PlaceOrderFormController implements Initializable {
     public Button btnAdd;
     @FXML
     private TableView<Cart> tblOrder;
@@ -57,9 +57,7 @@ public class PlaceOrderFormController extends Application implements Initializab
             for (String id : CustomerFormController.getAllCustomerId()) {
                 cmbCustomerId.getItems().addAll(id);
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -69,9 +67,7 @@ public class PlaceOrderFormController extends Application implements Initializab
             for (String code : ItemFormController.getAllItemCode()) {
                 cmbItemCode.getItems().addAll(code);
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -102,11 +98,11 @@ public class PlaceOrderFormController extends Application implements Initializab
     }
 
     private void setCellValueFactory() {
-        colCode.setCellValueFactory(new PropertyValueFactory<Cart, String>("code"));
-        colDescription.setCellValueFactory(new PropertyValueFactory<Cart, String>("description"));
-        colQty.setCellValueFactory(new PropertyValueFactory<Cart, Integer>("qty"));
-        colUnitPrice.setCellValueFactory(new PropertyValueFactory<Cart, Double>("unitPrice"));
-        colTotal.setCellValueFactory(new PropertyValueFactory<Cart, Double>("total"));
+        colCode.setCellValueFactory(new PropertyValueFactory<>("code"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -206,11 +202,9 @@ public class PlaceOrderFormController extends Application implements Initializab
                 new Alert(Alert.AlertType.CONFIRMATION, "Order Placed ! ").show();
             }
 
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }catch (Exception ex){
+        } catch (Exception ex){
             new Alert(Alert.AlertType.WARNING, "Check the all Fields").show();
         }
     }
@@ -226,9 +220,7 @@ public class PlaceOrderFormController extends Application implements Initializab
             } else {
                 lblID.setText("D001");
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 
@@ -247,9 +239,7 @@ public class PlaceOrderFormController extends Application implements Initializab
         try {
             lblCustomerName.setText(CustomerFormController.getAllCustomers(customerId).getName());
             loadAllCustomerId();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -260,15 +250,10 @@ public class PlaceOrderFormController extends Application implements Initializab
             txtDescription.setText(ItemFormController.getAllItems(itemCode).getDescription());
             txtUnitPrice.setText(String.valueOf(ItemFormController.getAllItems(itemCode).getUnitPrice()));
             txtQtyOnHand.setText(String.valueOf(ItemFormController.getAllItems(itemCode).getQtyOnHand()));
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
 
-    @Override
-    public void start(Stage stage) throws Exception {
 
-    }
 }
