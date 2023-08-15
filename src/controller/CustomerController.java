@@ -9,7 +9,6 @@ import model.Customer;
 import java.sql.*;
 
 
-
 public class CustomerController implements CustomerService {
     @Override
     public boolean addCustomer(Customer customer) {
@@ -71,6 +70,7 @@ public class CustomerController implements CustomerService {
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
 
 
         }
@@ -105,7 +105,7 @@ public class CustomerController implements CustomerService {
 
             ObservableList<Customer> list = FXCollections.observableArrayList();
             Connection connection = DBConnection.getInstance().getConnection();
-            PreparedStatement pstm = connection.prepareStatement( "Select * From Customer");
+            PreparedStatement pstm = connection.prepareStatement("Select * From Customer");
             ResultSet rst = pstm.executeQuery();
 
             while (rst.next()) {
@@ -116,10 +116,11 @@ public class CustomerController implements CustomerService {
             return list;
 
         } catch (SQLException | ClassNotFoundException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             e.printStackTrace();
-            throw new RuntimeException(e);
+
         }
 
-
+        return null;
     }
 }

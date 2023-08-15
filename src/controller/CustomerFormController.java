@@ -42,11 +42,7 @@ public class CustomerFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCellValueFactory();
-        try {
-            loadTable();
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        loadTable();
         tblCustomer.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (null != newValue) {
                 setTableValues(newValue);
@@ -83,7 +79,7 @@ public class CustomerFormController implements Initializable {
     }
 
 
-    private void loadTable() throws SQLException, ClassNotFoundException {
+    private void loadTable()  {
        ObservableList<Customer> customerList=new CustomerController().getAllCustomer();
         tblCustomer.setItems(customerList);
     }
@@ -130,16 +126,10 @@ public class CustomerFormController implements Initializable {
     }
 
     public void btnSearchCustomer(ActionEvent actionEvent) {
-        try {
-            txtIdOnAction(actionEvent);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        txtIdOnAction(actionEvent);
     }
 
-    public void btnUpdateCustomer(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    public void btnUpdateCustomer(ActionEvent actionEvent)  {
         try {
             String id = txtId.getText();
             String name = txtName.getText();
@@ -173,7 +163,7 @@ public class CustomerFormController implements Initializable {
 
     }
 
-    public void btnDeleteCustomer(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    public void btnDeleteCustomer(ActionEvent actionEvent)  {
         boolean isDeleted=new CustomerController().deleteCustomer(txtId.getText());
         if (isDeleted) {
             loadTable();
@@ -199,10 +189,10 @@ public class CustomerFormController implements Initializable {
 
     }
 
-    public void txtIdOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        Customer customer=new CustomerController().searchCustomer(txtId.getText());
+    public void txtIdOnAction(ActionEvent actionEvent)  {
+        Customer customer = new CustomerController().searchCustomer(txtId.getText());
 
-        if (null!=customer) {
+        if (null != customer) {
             txtId.setText(customer.getId());
             txtName.setText(customer.getName());
             txtAddress.setText(customer.getAddress());

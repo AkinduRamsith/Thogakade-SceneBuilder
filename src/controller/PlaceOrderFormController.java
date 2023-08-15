@@ -1,7 +1,6 @@
 package controller;
 
 import db.DBConnection;
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -185,6 +184,7 @@ public class PlaceOrderFormController implements Initializable {
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
 
         try {
+
             String orderId = lblID.getText();
             String orderDate = lblDate.getText();
             String customerId = cmbCustomerId.getSelectionModel().getSelectedItem().toString();
@@ -194,9 +194,13 @@ public class PlaceOrderFormController implements Initializable {
                 int qty = cart.getQty();
                 double unitPrice = cart.getUnitPrice();
                 OrderDetail orderDetail = new OrderDetail(orderId, itemCode, qty, unitPrice);
+                if(itemCode==null){
+                    new Alert(Alert.AlertType.WARNING, "Orders Empty ! ").show();
+                }
                 orderDetailArrayList.add(orderDetail);
             }
             Order order = new Order(orderId, orderDate, customerId, orderDetailArrayList);
+
             boolean isAdded = OrderController.placeOrder(order);
             if (isAdded) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Order Placed ! ").show();

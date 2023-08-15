@@ -36,13 +36,13 @@ public class OrderController {
         return list;
 
     }
-    public ObservableList<OrderCart> getAllOrderDetails() {
+    public static ObservableList<OrderCart> getAllOrderDetails(String id) {
 
         try {
 
             ObservableList<OrderCart> list = FXCollections.observableArrayList();
             Connection connection = DBConnection.getInstance().getConnection();
-            PreparedStatement pstm = connection.prepareStatement( " select * from orders inner join orderdetail on orders.id=orderdetail.orderid inner join item on item.code=orderdetail.itemcode");
+            PreparedStatement pstm = connection.prepareStatement( "SELECT *FROM orders INNER JOIN orderdetail ON orders.id = orderdetail.orderId inner join item on item.code=orderdetail.itemcode WHERE orderdetail.orderId = '" + id + "'");
             ResultSet rst = pstm.executeQuery();
 
             while (rst.next()) {

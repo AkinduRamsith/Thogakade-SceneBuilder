@@ -61,10 +61,10 @@
       <TableView fx:id="tblOrderDetail" layoutX="22.0" layoutY="424.0" prefHeight="243.0" prefWidth="690.0">
         <columns>
           <TableColumn fx:id="colOrderID" prefWidth="68.79995346069336" text="Order ID" />
-          <TableColumn fx:id="colCustomerID" prefWidth="133.60003662109375" text="Customer ID" />
-            <TableColumn fx:id="colItemCode" prefWidth="148.00001525878906" text="Item Code" />
-            <TableColumn fx:id="colDescription" prefWidth="220.7999267578125" text="Description" />
-            <TableColumn fx:id="colQty" prefWidth="68.0001220703125" text="Qty" />
+          <TableColumn fx:id="colCustomerID" prefWidth="108.7999267578125" text="Customer ID" />
+            <TableColumn fx:id="colItemCode" prefWidth="148.80006408691406" text="Item Code" />
+            <TableColumn fx:id="colDescription" prefWidth="309.60003662109375" text="Description" />
+            <TableColumn fx:id="colQty" editable="false" prefWidth="49.5999755859375" text="Qty" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
